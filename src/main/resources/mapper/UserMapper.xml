@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bigdata.agriculture.app.mapper.UserMapper">
+        <!--    用户名密码登录-->
+        <select id="getuserbynameandpass" resultType="com.bigdata.agriculture.app.entity.User">
+        select *
+        from user u
+        where u.user_name=#{userName} and u.user_pass=#{userPass}
+    </select>
+        <!--注册-->
+        <insert id="insertintouser">
+        insert into user(user_name,user_pass,user_phone)
+        values(#{userName},#{userPass},#{userPhone})
+    </insert>
+        <!--    根据手机号查询是否存在该用户-->
+        <select id="selectuserbyuerphone" resultType="com.bigdata.agriculture.app.entity.User">
+        select *
+        from user register
+        where register.user_phone=#{userPhone}
+    </select>
+    </mapper>
